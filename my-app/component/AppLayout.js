@@ -7,6 +7,7 @@ import UserProfile from "../component/UserProfile";
 import LoginForm from "../component/LoginForm";
 const AppLayout = ({ children }) => {
   const [isLogin, setIsLogin] = useState(false);
+
   return (
     <div>
       <Menu mode="horizontal">
@@ -31,7 +32,11 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          {isLogin ? <UserProfile /> : <LoginForm />}
+          {isLogin ? (
+            <UserProfile setIsLogin={setIsLogin} />
+          ) : (
+            <LoginForm setIsLogin={setIsLogin} />
+          )}
         </Col>
         <Col xs={24} md={12}>
           {children}

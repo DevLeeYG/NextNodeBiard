@@ -7,7 +7,7 @@ const ButtonWrapper = styled.div`
   margin-top: 10px;
 `;
 
-const LoginForm = () => {
+const LoginForm = ({ setIsLogin }) => {
   const [id, setId] = useState("");
   const [passWord, setPassWord] = useState("");
   const [checkPass, setCheckPass] = useState("");
@@ -18,8 +18,18 @@ const LoginForm = () => {
   const onChangePass = useCallback((e) => {
     setPassWord(e.target.value);
   }, []);
+
+  const onSubmitForm = useCallback(() => {
+    console.log({ id, passWord });
+    setIsLogin(true);
+  }, [id, passWord]);
+
+  const FormWrapper = styled(Form)`
+    padding: 20px;
+  `;
+
   return (
-    <Form>
+    <FormWrapper onFinish={onSubmitForm}>
       <div>
         <label htmlFor="user-id">아이디</label>
         <br />
@@ -46,20 +56,8 @@ const LoginForm = () => {
           </a>
         </Link>
       </ButtonWrapper>
-    </Form>
+    </FormWrapper>
   );
 };
 
 export default LoginForm;
-{
-  /* <div>
-        <label htmlFor="user-check-pass">비밀번호 확인</label>
-        <br />
-        <Input
-          name="user-check-pass"
-          value={checkPass}
-          onChange={onCheckPass}
-          required
-        />
-      </div> */
-}
