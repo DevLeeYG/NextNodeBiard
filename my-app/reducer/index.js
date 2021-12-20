@@ -1,3 +1,4 @@
+import { HYDRATE } from "next-redux-wrapper";
 import React from "react";
 
 const initialState = {
@@ -10,13 +11,6 @@ const initialState = {
   post: {
     mainPosts: [],
   },
-};
-
-const changeNickname = (data) => {
-  return {
-    type: "CHANGE_NICKNAME",
-    data,
-  };
 };
 
 export const login = (data) => {
@@ -32,8 +26,9 @@ export const logout = () => {
 };
 
 const rootReducer = (state = initialState, action) => {
-  console.log("123123", state.user.isLogin);
   switch (action.type) {
+    case HYDRATE:
+      return { ...state, ...action.payload };
     case "LOG_IN":
       return {
         ...state,
