@@ -1,9 +1,13 @@
 import React, { useCallback } from "react";
 import { Card, Avatar, Button } from "antd";
+import { useDispatch } from "react-redux";
+import { logout } from "../reducer/index";
 
-const UserProfile = ({ setIsLogin }) => {
+const UserProfile = () => {
+  const dispatch = useDispatch();
+
   const onLogout = useCallback(() => {
-    setIsLogin(false);
+    dispatch(logout());
   }, []);
 
   return (

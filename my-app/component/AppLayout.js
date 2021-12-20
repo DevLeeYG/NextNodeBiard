@@ -5,9 +5,12 @@ import "antd/dist/antd.css";
 import { Menu, Input, Row, Col } from "antd";
 import UserProfile from "../component/UserProfile";
 import LoginForm from "../component/LoginForm";
-const AppLayout = ({ children }) => {
-  const [isLogin, setIsLogin] = useState(false);
+import { useSelector } from "react-redux";
 
+const AppLayout = ({ children }) => {
+  // const [isLogin, setIsLogin] = useState(false);
+  const isLogin = useSelector((state) => state.user.isLogin);
+  // console.log(LoggedIn);
   return (
     <div>
       <Menu mode="horizontal">
@@ -32,11 +35,7 @@ const AppLayout = ({ children }) => {
       </Menu>
       <Row gutter={8}>
         <Col xs={24} md={6}>
-          {isLogin ? (
-            <UserProfile setIsLogin={setIsLogin} />
-          ) : (
-            <LoginForm setIsLogin={setIsLogin} />
-          )}
+          {isLogin ? <UserProfile /> : <LoginForm />}
         </Col>
         <Col xs={24} md={12}>
           {children}
