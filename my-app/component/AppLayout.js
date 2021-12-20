@@ -9,6 +9,7 @@ import { useSelector } from "react-redux";
 const AppLayout = ({ children }) => {
   // const [isLogin, setIsLogin] = useState(false);
   const isLogin = useSelector((state) => state.user.isLogin);
+  console.log(isLogin);
   return (
     <div>
       <Menu mode="horizontal">
