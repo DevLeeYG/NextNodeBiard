@@ -1,7 +1,7 @@
 import { Card, Button, Avatar, Popover, List, Comment } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import PropTypes from "prop-types";
-import React from "react";
+import React, { useCallback, useState } from "react";
 import {
   RetweetOutlined,
   HeartTwoTone,
@@ -13,17 +13,35 @@ import {
 import { useSelector } from "react-redux";
 import PostImages from "./PostImages";
 const PostCard = ({ post }) => {
+  const [liked, setLiked] = useState(false);
+  const [commentFormOpened, setCommentFormOpened] = useState(false);
+
+  const onToggleLike = useCallback(() => {
+    setLiked((prev) => !prev);
+  }, []);
+  const onToggleComment = useCallback(() => {
+    setCommentFormOpened((prev) => !prev);
+  });
+
   const { me } = useSelector((state) => state.user);
   const id = me?.id;
 
   return (
-    <div>
+    <div style={{ marginBottom: 20 }}>
       <Card
         cover={post.Images[0] && <PostImages images={post.Images} />}
         actions={[
           <RetweetOutlined key="retweet" />,
-          <HeartOutlined key="heart" />,
-          <MessageOutlined key="message" />,
+          liked ? (
+            <HeartTwoTone
+              twoToneColor="#eb2f96"
+              key="heart"
+              onClick={onToggleLike}
+            />
+          ) : (
+            <HeartOutlined key="comment" onClick={onToggleLike} />
+          ),
+          <MessageOutlined key="message" onClick={onToggleComment} />,
           <Popover
             key="more"
             content={
@@ -46,10 +64,12 @@ const PostCard = ({ post }) => {
         <Card.Meta
           avatar={<Avatar>{post.User.nickname[0]}</Avatar>}
           title={post.User.nickname}
+          description={post.content}
         />
         {/* <Image /> */}
-        <Content />
+        {/* <Content /> */}
       </Card>
+      {commentFormOpened && <div>댓글 부분</div>}
       {/* <CommentForm /> */}
       {/* <Comments /> */}
     </div>

@@ -56,6 +56,7 @@ const dummyPost = {
 };
 
 const reducer = (state = initialState, action) => {
+  console.log(state.mainPosts);
   switch (action.type) {
     case ADD_POST: {
       return {
@@ -64,11 +65,8 @@ const reducer = (state = initialState, action) => {
         postAdded: true,
       };
     }
-    default: {
-      return {
-        ...state,
-      };
-    }
+    default:
+      return state;
   }
 };
 export default reducer;
