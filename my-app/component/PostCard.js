@@ -1,6 +1,7 @@
 import { Card, Button, Avatar, Popover, List, Comment } from "antd";
 import { Content } from "antd/lib/layout/layout";
 import PropTypes from "prop-types";
+import CommentForm from "./CommentForm";
 import React, { useCallback, useState } from "react";
 import {
   RetweetOutlined,
@@ -67,10 +68,30 @@ const PostCard = ({ post }) => {
           description={post.content}
         />
         {/* <Image /> */}
-        {/* <Content /> */}
+        {/* <Content /> */}{" "}
+        {/*코멘트폼에는 post 가 들어가는데 댓글에서 어디 댓글에 달지 아이디가 필요하기 때문이다 */}
       </Card>
-      {commentFormOpened && <div>댓글 부분</div>}
-      {/* <CommentForm /> */}
+      {commentFormOpened && (
+        <div>
+          {" "}
+          <CommentForm post={post} />
+          <List
+            header={`${post.Comments.length}개`}
+            itemLayout="horizontal"
+            dataSource={post.Comments}
+            renderItem={(item) => (
+              <li>
+                <Comment
+                  author={item.User.nickname}
+                  avatar={<Avatar>{item.User.nickname[0]}</Avatar>}
+                  content={item.content}
+                />
+              </li>
+            )}
+          />
+        </div>
+      )}
+
       {/* <Comments /> */}
     </div>
   );
