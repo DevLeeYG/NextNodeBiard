@@ -14,6 +14,8 @@ import {
 import { useSelector } from "react-redux";
 import PostImages from "./PostImages";
 const PostCard = ({ post }) => {
+  console.log("postimage", post.images);
+
   const [liked, setLiked] = useState(false);
   const [commentFormOpened, setCommentFormOpened] = useState(false);
 

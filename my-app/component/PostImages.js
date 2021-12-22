@@ -1,10 +1,15 @@
-import React, { useCallback } from "react";
+import React, { useCallback, useState } from "react";
 import PropTypes from "prop-types";
 import { PlusOutlined } from "@ant-design/icons";
+import ImagesZoom from "./ImagesZoom";
 const PostImages = ({ images }) => {
+  const [showImagesZoom, setShowImagesZomm] = useState(false);
+
   const onZoom = useCallback(() => {
     setShowImagesZomm(true);
   }, []);
+
+  console.log("postImages1", images);
 
   if (images.length === 1) {
     <>
@@ -14,8 +19,13 @@ const PostImages = ({ images }) => {
         alt="이미지입니다"
         onClick={onZoom}
       />
+      {showImagesZoom && <ImagesZoom image={images} onClose={onClose} />}
     </>;
   }
+
+  const onClose = useCallback(() => {
+    setShowImagesZomm(false);
+  }, []);
 
   if (images.length === 2) {
     return (
@@ -35,6 +45,7 @@ const PostImages = ({ images }) => {
           alt={images[1].src}
           onClick={onZoom}
         />
+        {showImagesZoom && <ImagesZoom image={images} onClose={onClose} />}
       </>
     );
   }
@@ -62,6 +73,7 @@ const PostImages = ({ images }) => {
         {images.length - 1}
         개의 사진 더보기
       </div>
+      {showImagesZoom && <ImagesZoom image={images} onClose={onClose} />}
     </div>
   );
 };
