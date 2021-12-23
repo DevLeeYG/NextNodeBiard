@@ -1,45 +1,59 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import Slick from "react-slick";
-import Slider from "react-slick";
-const ImagesZoom = ({ image, onClose }) => {
-  console.log("ImagesZoom", image);
-  console.log("images", image);
+import {
+  Overlay,
+  Header,
+  CloseBtn,
+  SlickWrapper,
+  ImgWrapper,
+  Indicator,
+  Global,
+} from "./styles";
 
-  const [currentSlick, setCurrentSlick] = useState(0);
-  const set = {
-    slidesToShow: 1,
-    slidesToScroll: 1,
-    variableWidth: false,
-  };
+const ImagesZoom = ({ image, onClose }) => {
+  const [currentSlide, setCurrentSlide] = useState(0);
 
   return (
-    <div>
-      <header>
+    <Overlay>
+      <Global />
+      <Header>
         <h1>상세 이미지</h1>
-        <button onClick={onClose}>X</button>
-      </header>
-      <div>
+        <CloseBtn onClick={onClose} />
+      </Header>
+      <SlickWrapper>
         <div>
-          <Slider
-            afterChange={(slide) => setCurrentSlick(slide)}
+          <Slick
             initialSlide={0}
-            {...set}
+            beforeChange={(slide) => setCurrentSlide(slide)}
+            infinite
+            arrows={false}
+            slidesToShow={1}
+            slidesToScroll={1}
           >
             {image.map((v) => (
-              <div key={v.src}>
+              <ImgWrapper key={v.src}>
                 <img src={v.src} alt={v.src} />
-              </div>
+              </ImgWrapper>
             ))}
-          </Slider>
+          </Slick>
+          <Indicator>
+            <div>
+              {currentSlide + 1} /{image.length}
+            </div>
+          </Indicator>
         </div>
-      </div>
-    </div>
+      </SlickWrapper>
+    </Overlay>
   );
 };
 
 ImagesZoom.propTypes = {
-  images: PropTypes.arrayOf(PropTypes.object).isRequired,
+  image: PropTypes.arrayOf(
+    PropTypes.shape({
+      src: PropTypes.string,
+    })
+  ).isRequired,
   onClose: PropTypes.func.isRequired,
 };
 

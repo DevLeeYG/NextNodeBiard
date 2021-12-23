@@ -42,7 +42,6 @@ const Signup = () => {
       //약관
       return setTermError(true);
     }
-    console.log(id, nickname, password);
   }, [password, passwordCheck, term]);
 
   return (
