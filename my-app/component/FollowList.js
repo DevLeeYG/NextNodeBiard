@@ -1,7 +1,7 @@
-import { Button, Card, List } from "antd";
 import { StopOutlined } from "@ant-design/icons";
-import React, { useMemo } from "react";
+import { Button, Card, List } from "antd";
 import PropTypes from "prop-types";
+import React, { useMemo } from "react";
 
 const FollowList = ({ header, data }) => {
   const style = useMemo(() => [
@@ -10,7 +10,7 @@ const FollowList = ({ header, data }) => {
     },
     { marginTop: "20px" },
   ]);
-  console.log(style);
+
   const grid = useMemo(() => ({
     gutter: 4,
     xs: 2,

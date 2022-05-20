@@ -1,8 +1,8 @@
+import { Button, Checkbox, Form, Input } from "antd";
 import React, { useCallback, useState } from "react";
-import AppLayout from "../component/AppLayout";
-import { Form, Input, Checkbox, Button } from "antd";
-import useInput from "../component/hooks/useInput";
 import styled from "styled-components";
+import AppLayout from "../component/AppLayout";
+import useInput from "../component/hooks/useInput";
 
 //onfinish 는 e.프리벤트 디폴트가 자동실행된다.
 
@@ -50,19 +50,12 @@ const Signup = () => {
         <div>
           <label htmlFor="user-id">아이디</label>
           <br />
-          <Input
-            required
-            name="user-id"
-            value={id}
-            required
-            onChange={onChangeId}
-          />
+          <Input required name="user-id" value={id} onChange={onChangeId} />
         </div>
         <div>
           <label htmlFor="user-nickname">닉네임</label>
           <br />
           <Input
-            required
             name="user-nickname"
             value={nickname}
             required
@@ -76,7 +69,6 @@ const Signup = () => {
             required
             name="user-password"
             value={password}
-            required
             onChange={onChangePassword}
           />
         </div>
@@ -88,7 +80,6 @@ const Signup = () => {
             type="password"
             name="user-password-check"
             value={passwordCheck}
-            required
             onChange={onChangePasswordCheck}
           />
           {passwordError && (

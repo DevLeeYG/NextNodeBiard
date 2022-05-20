@@ -1,6 +1,6 @@
-import React, { useCallback, useState } from "react";
-import PropTypes from "prop-types";
 import { PlusOutlined } from "@ant-design/icons";
+import PropTypes from "prop-types";
+import React, { useCallback, useState } from "react";
 import ImagesZoom from "./ImagesZoom";
 const PostImages = ({ images }) => {
   const [showImagesZoom, setShowImagesZomm] = useState(false);
@@ -8,8 +8,6 @@ const PostImages = ({ images }) => {
   const onZoom = useCallback(() => {
     setShowImagesZomm(true);
   }, []);
-
-  console.log("postImages1", images);
 
   if (images.length === 1) {
     <>

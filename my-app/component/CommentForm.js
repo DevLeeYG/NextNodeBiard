@@ -1,13 +1,10 @@
-import { Form, Input, Button } from "antd";
+import { Button, Form, Input } from "antd";
+import PropTypes from "prop-types";
 import React, { useCallback } from "react";
 import useInput from "./hooks/useInput";
-import PropTypes from "prop-types";
-import { useSelector } from "react-redux";
 const CommentForm = ({ post }) => {
   const [commentText, onChangeCommentText] = useInput("");
-  const onSubmitComment = useCallback(() => {
-    console.log(post.id, commentText);
-  }, [commentText]);
+  const onSubmitComment = useCallback(() => {}, [commentText]);
   return (
     <Form onFinish={onSubmitComment}>
       <Form.Item style={{ position: "relative", margin: 0 }}>

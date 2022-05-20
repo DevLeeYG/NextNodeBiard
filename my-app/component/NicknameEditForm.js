@@ -1,6 +1,5 @@
-import React, { useMemo } from "react";
 import { Form, Input } from "antd";
-import styled from "styled-components";
+import React, { useMemo } from "react";
 
 const NicknameEditForm = () => {
   const style = useMemo(() => ({

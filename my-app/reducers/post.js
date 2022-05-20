@@ -6,7 +6,7 @@ export const initialState = {
         id: 1,
         nickname: "제로초",
       },
-      content: "첫 번째 게시글 #해시태그 #해시태그",
+      content: "첫 번째 게시글 #해시태그",
       Images: [
         {
           src: "https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726",
@@ -56,7 +56,6 @@ const dummyPost = {
 };
 
 const reducer = (state = initialState, action) => {
-  console.log(state.mainPosts);
   switch (action.type) {
     case ADD_POST: {
       return {

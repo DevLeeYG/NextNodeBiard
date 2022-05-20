@@ -1,19 +1,14 @@
-import { Card, Button, Avatar, Popover, List, Comment } from "antd";
-import { Content } from "antd/lib/layout/layout";
-import PropTypes from "prop-types";
-import CommentForm from "./CommentForm";
-import React, { useCallback, useState } from "react";
 import {
-  RetweetOutlined,
-  HeartTwoTone,
-  HeartOutlined,
-  MessageOutlined,
-  EllipsisOutlined,
+  EllipsisOutlined, HeartOutlined, HeartTwoTone, MessageOutlined, RetweetOutlined
 } from "@ant-design/icons";
-
+import { Avatar, Button, Card, Comment, List, Popover } from "antd";
+import PropTypes from "prop-types";
+import React, { useCallback, useState } from "react";
 import { useSelector } from "react-redux";
-import PostImages from "./PostImages";
+import CommentForm from "./CommentForm";
 import PostCardContent from "./PostCardContent";
+import PostImages from "./PostImages";
+
 const PostCard = ({ post }) => {
   const [liked, setLiked] = useState(false);
   const [commentFormOpened, setCommentFormOpened] = useState(false);

@@ -1,7 +1,7 @@
 import React from "react";
 import AppLayout from "../component/AppLayout";
-import NicknameEditForm from "../component/NicknameEditForm";
 import FollowList from "../component/FollowList";
+import NicknameEditForm from "../component/NicknameEditForm";
 const Profile = () => {
   const followerList = [
     { nickname: "QooQua" },

@@ -1,12 +1,12 @@
-import React, { useState } from "react";
-import PropTypes from "prop-types";
-import Link from "next/link";
+import { Col, Input, Menu, Row } from "antd";
 import "antd/dist/antd.css";
-import { Menu, Input, Row, Col } from "antd";
-import UserProfile from "../component/UserProfile";
-import LoginForm from "../component/LoginForm";
+import Link from "next/link";
+import PropTypes from "prop-types";
+import React from "react";
 import { useSelector } from "react-redux";
 import { createGlobalStyle } from "styled-components";
+import LoginForm from "../component/LoginForm";
+import UserProfile from "../component/UserProfile";
 
 const Global = createGlobalStyle`
 .ant-row{
