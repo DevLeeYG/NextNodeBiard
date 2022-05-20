@@ -23,7 +23,6 @@ const Global = createGlobalStyle`
 `;
 
 const AppLayout = ({ children }) => {
-  // const [isLogin, setIsLogin] = useState(false);
   const isLogin = useSelector((state) => state.user.isLogin);
 
   return (
@@ -69,7 +68,7 @@ const AppLayout = ({ children }) => {
     </div>
   );
 };
-AppLayout.PropTypes = {
+AppLayout.propTypes = {
   children: PropTypes.node.isRequired,
 };
 

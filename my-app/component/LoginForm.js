@@ -1,6 +1,5 @@
 import { Button, Form, Input } from "antd";
 import Link from "next/link";
-import PropTypes from "prop-types";
 import React, { useCallback } from "react";
 import { useDispatch } from "react-redux";
 import styled from "styled-components";
@@ -54,9 +53,6 @@ const LoginForm = () => {
       </ButtonWrapper>
     </FormWrapper>
   );
-};
-LoginForm.PropTypes = {
-  setIsLogin: PropTypes.func.isRequired,
 };
 
 export default LoginForm;
