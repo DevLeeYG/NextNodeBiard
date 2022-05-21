@@ -1,38 +1,16 @@
 import axios from "axios";
-import { all, call, fork, take } from "redux-saga/effects";
-function logInAPI() {
-  return axios.post("/api/login");
-}
+import { all, fork } from "redux-saga/effects";
+/**
+ * 사가를 쓰는방법은 루트사가를 만들어놓고 거기에 비동기 액션들을 넣어준다
+ */
 
-function* logIn() {
-  try {
-    const result = yield call(logInAPI);
-    yield PushSubscription({
-      type: "LOG_IN_SUCCESS",
-      data: result.data,
-    });
-  } catch (err) {
-    yield put({
-      type: "LOG_IN_FAILURE",
-      data: err.response.data,
-    });
-  }
-}
-//success = result.data,
-//err.response.data
+//all 은 배열을 받고 안에 있는 것들을 한번에 실행
+//fork는 함수를 실행시키는 역할을 합니다.
+//콜도 마찬가지나 fork는 비동기 call은 동기
 
-function* watchLogIn() {
-  yield take("LOG_IN");
-}
-
-function* watchLogOut() {
-  yield take("LOG_OUT");
-}
-
-function* watchAddPost() {
-  yield take("ADD_POST");
-}
+import postSaga from "./post";
+import userSaga from "./user";
 
 export default function* rootSaga() {
-  yield all([fork(watchLogIn), fork(watchLogOut), fork(watchAddPost)]);
+  yield all([fork(postSaga), fork(userSaga)]);
 }

@@ -6,15 +6,15 @@ import React, { useMemo } from "react";
 const FollowList = ({ header, data }) => {
   const style = useMemo(() => [
     {
-      marginBottom: "20px",
+      marginBottom: "20px"
     },
-    { marginTop: "20px" },
+    { marginTop: "20px" }
   ]);
 
   const grid = useMemo(() => ({
     gutter: 4,
     xs: 2,
-    md: 3,
+    md: 3
   }));
 
   const head = useMemo(() => {
@@ -36,7 +36,7 @@ const FollowList = ({ header, data }) => {
       loadMore={loadMore}
       bordered
       dataSource={data}
-      renderItem={(item) => (
+      renderItem={item => (
         <List.Item style={style[1]}>
           <Card actions={[<StopOutlined key="stop" />]}>
             <Card.Meta description={item.nickname} />
@@ -49,7 +49,7 @@ const FollowList = ({ header, data }) => {
 
 FollowList.propTypes = {
   header: PropTypes.string.isRequired,
-  data: PropTypes.array.isRequired,
+  data: PropTypes.array.isRequired
 };
 
 export default FollowList;

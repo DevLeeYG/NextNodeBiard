@@ -26,7 +26,7 @@ const CommentForm = ({ post }) => {
 };
 
 CommentForm.propTypes = {
-  post: PropTypes.object.isRequired,
+  post: PropTypes.object.isRequired
 };
 
 export default CommentForm;
