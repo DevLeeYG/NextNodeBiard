@@ -23,10 +23,10 @@ export const logOutRequestAction = () => {
 
 const reducer = (state = initialState, action) => {
   switch (action.type) {
-    case "LOG__IN_REQUEST":
+    case "LOG_IN_REQUEST":
       return {
         ...state,
-        isLogin: true,
+        isLoggingIn: true,
         me: action.data
       };
     case "LOG_IN_SUCCESS":

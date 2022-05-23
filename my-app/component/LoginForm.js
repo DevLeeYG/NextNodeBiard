@@ -3,7 +3,7 @@ import Link from "next/link";
 import React, { useCallback } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import styled from "styled-components";
-import { login, logInRequestAction } from "../reducers/user";
+import { logInRequestAction } from "../reducers/user";
 import useInput from "./hooks/useInput";
 const ButtonWrapper = styled.div`
   margin-top: 10px;
@@ -12,6 +12,7 @@ const ButtonWrapper = styled.div`
 const LoginForm = () => {
   const dispatch = useDispatch();
   const { isLoggingIn } = useSelector(state => state.user);
+  console.log(isLoggingIn);
   const [id, onChangeId] = useInput("");
   const [passWord, onChangePassword] = useInput("");
 

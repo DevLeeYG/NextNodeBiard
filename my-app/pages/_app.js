@@ -1,8 +1,8 @@
 import "antd/dist/antd.css";
+import withReduxSaga from "next-redux-saga";
 import Head from "next/head";
 import React from "react";
-import wrapper from "../store/configureStore";
-
+import Wrapper from "../store/configureStore";
 const App = ({ Component }) => {
   return (
     <>
@@ -18,4 +18,4 @@ const App = ({ Component }) => {
 // App.propTypes = {
 //   Component: PropTypes.node.isRequired,
 // };
-export default wrapper.withRedux(App);
+export default Wrapper.withRedux(withReduxSaga(App));
